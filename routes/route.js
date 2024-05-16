@@ -28,14 +28,14 @@ router.post("/forgotPassword", async (req, res) => {
         .createHash("sha256")
         .update(token)
         .digest("hex");
-      await db.update_forgot_password_token(user[0].id, resetToken);
+      await db.update_forgot_password_token(user[0].ID_ls, resetToken);
 
       const mailOption = {
         email: email,
         subject: "Esqueci o link da senha",
         message: mailTemplate(
           "Recebemos uma solicitação para redefinir sua senha. Por favor, redefina sua senha usando o link abaixo.",
-          `${process.env.FRONTEND_URL}/ResetarSenha?id=${user[0].id}&token=${resetToken}`,
+          `${process.env.FRONTEND_URL}/redefinir-senha?id=${user[0].id}&token=${resetToken}`,
           "Redefinir Senha"
         ),
       };

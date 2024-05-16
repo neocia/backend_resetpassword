@@ -16,7 +16,7 @@ const pool = mysql.createPool({
 let db = {};
 
 db.get_user_by_email = (email) => {
-  const query = `SELECT email, id from details WHERE email = "${email}";`;
+  const query = `SELECT email, ID_ls from ${process.env.DATABASE_NAME}.login_senha WHERE email = "${email}";`;
   return execute(query);
 };
 
