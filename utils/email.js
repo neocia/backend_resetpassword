@@ -21,9 +21,14 @@ async function sendEmail (option) {
       subject: option.subject,
       html: option.message,
     };
-     await new Promise((resolve, reject) => {
-       transporter.sendMail(mailOption, (err, info) => {
-      if (err) console.log(err);
+      await new Promise((resolve, reject) => {
+        transporter.sendMail(mailOption, (err, info) => {
+          if (err) {
+            console.log(err);
+            reject(err);  // Rejeita a promise em caso de erro
+        } else {
+            resolve(info);  // Resolve a promise em caso de sucesso
+        }
     });
   });
   } catch (err) {
