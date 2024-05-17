@@ -38,7 +38,7 @@ db.update_password_reset_token = (id) => {
 };
 
 db.update_user_password = (id, password) => {
-  const query = `UPDATE details SET password = '${password}' WHERE id = ${id}`;
+  const query = `UPDATE login_senha SET senha = '${password}' WHERE ID_ls = ${id}`;
   return execute(query);
 };
 
