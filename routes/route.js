@@ -35,7 +35,7 @@ router.post("/forgotPassword", async (req, res) => {
         subject: "Esqueci o link da senha",
         message: mailTemplate(
           "Recebemos uma solicitação para redefinir sua senha. Por favor, redefina sua senha usando o link abaixo.",
-          `${process.env.FRONTEND_URL}/redefinir-senha?id=${user[0].id}&token=${resetToken}`,
+          `${process.env.FRONTEND_URL}/redefinir-senha?id=${user[0].ID_ls}&token=${resetToken}`,
           "Redefinir Senha"
         ),
       };
