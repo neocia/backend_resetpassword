@@ -74,9 +74,7 @@ router.post("/ResetarSenha", async (req, res) => {
         });
       } else {
         await db.update_password_reset_token(userId);
-        const salt = await bcrypt.genSalt(NumSaltRounds);
-        const hashedPassword = await bcrypt.hash(password, salt);
-        await db.update_user_password(userId, hashedPassword);
+        await db.update_user_password(userId, password);
         res.json({
           success: true,
           message: "Sua redefinição de senha foi realizada com sucesso!",
